@@ -54,7 +54,7 @@ async function generateDataBaseConnectionString() {
 app.get('/api/food_history/device/:device/date/:date', getAll)
 app.get('/api/food_history/device', getDevice)
 app.get('/api/food_history/device/:device', getDate)
-
+app.get('/api/image/device/:device/date/:date', fetchImage)
 
 app.post('/api/upload', (req, res, next) => {
   // console.log(req)
@@ -176,6 +176,26 @@ async function getDate(req, res) {
     // client.close();
   }
 };
+
+async function fetchImage(req, res) {
+  try {
+    // Get the database and collection on which to run the operation
+    const device = req.params['device'];
+    const date = req.params['date'];
+    // Query for a movie that has the title 'The Room'
+    console.log(device)
+    console.log(date)
+    
+
+    const imagePath = path.join(__dirname, 'uploads',device,date,'0.png');
+    res.sendFile(imagePath);
+  } finally {
+    //   await client.close();
+  }
+}
+
+
+
 
 class FileReceiver {
   constructor(app) {
