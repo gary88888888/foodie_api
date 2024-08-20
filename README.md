@@ -11,3 +11,15 @@ npm install
 ```
 node index.js
 ```
+
+## 設定database 連線設定
+```
+{
+    "database": {
+      "host": "ip address",
+      "port": "port",
+      "username": "username",
+      "password": "password"
+    }
+}
+```
